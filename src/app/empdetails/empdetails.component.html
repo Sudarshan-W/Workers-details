@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <div class="card myrgb" style="width: 400px">
+          <div class="card-body">
+            <h4 class="card-title">{{ empobj.name }}</h4>
+            <div class="card-text">
+              <h5 style="text-align: center">
+                <label for="">Status:</label> &nbsp;
+                <span
+                  [ngClass]="{
+                    badge: true,
+                    'rounded-pill': true,
+                    'bg-success': empobj.status.toLowerCase() === 'active',
+                    'bg-warning': empobj.status.toLowerCase() === 'inactive',
+                    'bg-danger': empobj.status.toLowerCase() === 'suspend'
+                  }"
+                  style="padding: 10px"
+                >
+                  {{ empobj.status }}
+                </span>
+              </h5>
+              <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">CreatedBy:</span>
+                <span class="text-success">{{ empobj.createdBy }}</span>
+            </div>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">Email Id:</span>
+                <span class="text-success">{{ empobj.emailid }}</span>
+            </div>
+
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">Mobile No:</span>
+                <span class="text-success">{{ empobj.mobileno }}</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">Department:</span>
+                <span class="text-success">{{ empobj.department }}</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">CreatedDate:</span>
+                <span class="text-success">{{ empobj.createdDate | date: 'mediumDate'}}</span>
+            </div>
+            
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">UpdatedDate:</span>
+                <span class="text-success">{{ empobj.updatedDate | date: 'dd-MM-yyyy' }}</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">Updatedby:</span>
+                <span class="text-success">{{ empobj.updatedby }}</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <span class="text-muted font-weight-bold me-2">Country:</span>
+                <span class="text-success">{{ empobj.country.cname }}</span>
+            </div>
+
+            <button class="btn btn-primary" (click)="OnUpdate()">
+              Update Employee
+            </button>
+            <button routerLink="/home" class="btn btn-warning">Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer class="fixed-bottom"></app-footer>

@@ -1,0 +1,44 @@
+<div class="login-container">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <h2>Login Form</h2>
+
+        <!-- Email Input -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control"
+                   [pattern]="EMAIL_PATTERN"
+                   ngModel name="emailid" #email="ngModel"
+                   required placeholder="Enter the Email ID">
+            
+            <div class="error" *ngIf="email.touched && email.invalid">
+                ** Please Enter the Email ID
+                <div *ngIf="email.errors?.['pattern']">
+                    ** Please Enter a Valid Email ID
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control"
+                   ngModel name="password" #password="ngModel"
+                   required placeholder="Enter the Password">
+            
+            <div class="error" *ngIf="password.touched && password.invalid">
+                ** Please Enter the Password
+                <!-- <div *ngIf="password.errors?.['pattern']">
+                    ** Password must have 1 uppercase (A-Z), 1 lowercase (a-z), 1 number (0-9), 
+                    and 1 special character ($!%*?&).
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button [disabled]="f.invalid" class="btn btn-outline-success">Login</button>&nbsp;&nbsp;
+
+        <!-- Signup Link -->
+        <a routerLink="/signup">? Register Yourself</a>
+    </form>
+    <span id="backenderror">{{backendResponse}}</span>
+</div>
